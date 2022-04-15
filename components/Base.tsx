@@ -1,10 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
+import styled from 'styled-components';
 
 interface Props {
   title?: string;
   children: React.ReactNode;
 }
+
+const Main = styled.main`
+  padding: 40px 240px;
+`;
 
 const Base: React.FC<Props> = ({
   title = "BLOG",
@@ -20,7 +25,7 @@ const Base: React.FC<Props> = ({
         />
       </Head>
 
-      <main>{children}</main>
+      <Main>{children}</Main>
 
       <footer></footer>
     </>
