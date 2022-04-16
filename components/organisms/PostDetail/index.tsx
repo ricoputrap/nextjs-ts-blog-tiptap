@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import React from 'react'
+import { MdDelete, MdEdit } from "react-icons/md";
 import { BlogPost } from '../../../types/blog';
-import { Container, Details } from './index.styles';
+import { Actions, Details, Icon } from './index.styles';
 
 const PostDetail: React.FC<BlogPost> = ({ id, title, body, cover, createdAt }) => {
   return (
-    <Container>
+    <div className='container'>
       <Image
         className='cover'
         src={cover}
@@ -16,16 +17,20 @@ const PostDetail: React.FC<BlogPost> = ({ id, title, body, cover, createdAt }) =
       <Details>
         <div className='flex flex-between'>
           <p className='published-date'>March 22, 2022</p>
-          <div>
-            <span>X</span>
-            <span>Y</span>
-          </div>
+          <Actions>
+            <Icon>
+              <MdEdit />
+            </Icon>
+            <Icon>
+              <MdDelete />
+            </Icon>
+          </Actions>
         </div>
 
         <h2 className='title'>{ title }</h2>
         <div className='body'>{ body }</div>
       </Details>
-    </Container>
+    </div>
   )
 }
 

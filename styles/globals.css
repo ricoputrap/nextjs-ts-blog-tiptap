@@ -28,6 +28,10 @@ a {
 
 /* COMPONENTS */
 
+.container {
+  padding: 0 122px;
+}
+
 .title {
   margin: 0;
   color: #1E293B;
