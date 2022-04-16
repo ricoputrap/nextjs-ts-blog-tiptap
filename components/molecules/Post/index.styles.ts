@@ -11,6 +11,10 @@ export const Card = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  img.gallery__post-cover {
+    border-radius: 10px;
+  }
 `;
 
 export const Details = styled.div`

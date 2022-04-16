@@ -16,3 +16,43 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* UTILS */
+.flex {
+  display: flex;
+}
+.flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* COMPONENTS */
+
+.title {
+  margin: 0;
+  color: #1E293B;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 48px;
+}
+
+.body {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #000000;
+}
+
+.published-date {
+  margin: 0;
+  color: #CBD5E1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.cover {
+  border-radius: 10px;
+}
