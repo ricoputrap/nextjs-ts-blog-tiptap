@@ -7,6 +7,21 @@ import { Actions, Details, Icon } from './index.styles';
 
 const PostDetail: React.FC<BlogPost> = ({ id, title, body, cover, createdAt }) => {
   const publishedDate = useMemo(() => getFormattedDate(createdAt), [createdAt]);
+
+  const confirmDetelePost = async () => {
+    const isConfirmed = confirm("Are you sure want to delete this post?");
+    if (isConfirmed)
+      await deletePost();
+  }
+
+  const deletePost = async () => {
+    const URL = `https://62598fb5cda73d132d173293.mockapi.io/api/v1/posts/${id}`;
+    await fetch(URL, {
+      method: "DELETE"
+    });
+    window.location.replace("/");
+  }
+
   return (
     <div className='container'>
       <Image
@@ -23,7 +38,7 @@ const PostDetail: React.FC<BlogPost> = ({ id, title, body, cover, createdAt }) =
             <Icon>
               <MdEdit />
             </Icon>
-            <Icon>
+            <Icon onClick={confirmDetelePost}>
               <MdDelete />
             </Icon>
           </Actions>

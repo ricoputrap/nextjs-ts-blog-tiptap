@@ -17,4 +17,8 @@ export const Icon = styled.span`
   height: 24px;
   border-radius: 5px;
   background-color: #F8FAFC;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
