@@ -1,10 +1,12 @@
 import Image from 'next/image';
-import React from 'react'
+import React, { useMemo } from 'react'
 import { MdDelete, MdEdit } from "react-icons/md";
+import getFormattedDate from '../../../helpers/getFormattedDate';
 import { BlogPost } from '../../../types/blog';
 import { Actions, Details, Icon } from './index.styles';
 
 const PostDetail: React.FC<BlogPost> = ({ id, title, body, cover, createdAt }) => {
+  const publishedDate = useMemo(() => getFormattedDate(createdAt), [createdAt]);
   return (
     <div className='container'>
       <Image
@@ -16,7 +18,7 @@ const PostDetail: React.FC<BlogPost> = ({ id, title, body, cover, createdAt }) =
       />
       <Details>
         <div className='flex flex-between'>
-          <p className='published-date'>March 22, 2022</p>
+          <p className='published-date'>{ publishedDate }</p>
           <Actions>
             <Icon>
               <MdEdit />

@@ -1,10 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useMemo } from 'react'
+import getFormattedDate from '../../../helpers/getFormattedDate'
 import { BlogPost } from '../../../types/blog'
 import { Card, Details, PublishedDate, Title } from './index.styles'
 
 const Post: React.FC<BlogPost> = ({ id, title, cover, createdAt }) => {
+  const publishedDate = useMemo(() => getFormattedDate(createdAt), [createdAt]);
+
   return (
     <Link href={`/${id}`} passHref>
       <Card>
@@ -17,7 +20,7 @@ const Post: React.FC<BlogPost> = ({ id, title, cover, createdAt }) => {
         />
 
         <Details>
-          <PublishedDate>March 22, 2022</PublishedDate>
+          <PublishedDate>{ publishedDate }</PublishedDate>
           <Title>{ title }</Title>
         </Details>
       </Card>
