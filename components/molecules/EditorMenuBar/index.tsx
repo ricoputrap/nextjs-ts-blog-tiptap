@@ -87,7 +87,7 @@ const EditorMenuBar: React.FC<EditorContentProps> = ({ editor }) => {
       />
       <EditorMenuItem 
         label='blockquote'
-        clickHandler={() => editor?.chain().focus().setBlockquote().run()}
+        clickHandler={() => editor?.chain().focus().toggleBlockquote().run()}
         active={editor?.isActive('blockquote') || false}
       />
       <EditorMenuItem 
