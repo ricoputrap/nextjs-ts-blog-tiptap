@@ -1,9 +1,3 @@
-import { BlogPost } from "../types/blog";
-
-const initialState: BlogPost = {
-  title: "",
-  cover: "",
-  body: "",
-}
+const initialState: any = {}
 
 export default initialState;
