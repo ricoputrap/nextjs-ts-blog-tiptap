@@ -2,6 +2,7 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import React, { useState } from 'react'
 import Button from '../../atoms/Button';
+import EditorMenuBar from '../../molecules/EditorMenuBar';
 import { Actions, InputTitle } from './index.styles';
 
 const PostForm: React.FC = () => {
@@ -45,6 +46,7 @@ const PostForm: React.FC = () => {
           placeholder="Awesome Title"
           required
         />
+        <EditorMenuBar editor={editor} />
         <EditorContent editor={editor} />
         <Actions>
           <Button
