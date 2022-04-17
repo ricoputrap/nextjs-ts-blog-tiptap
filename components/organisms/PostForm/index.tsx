@@ -2,7 +2,7 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import React, { useState } from 'react'
 import Button from '../../atoms/Button';
-import { Actions } from './index.styles';
+import { Actions, InputTitle } from './index.styles';
 
 const PostForm: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -10,7 +10,7 @@ const PostForm: React.FC = () => {
     extensions: [
       StarterKit
     ],
-    content: `<div>HElllooo</div>`
+    content: `<div>Let's tell the world your great stories!</div>`
   });
 
   const onSubmit = async (e: React.MouseEvent) => {
@@ -28,17 +28,21 @@ const PostForm: React.FC = () => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(res => console.log("===== RES:", res))
+    .then(res => {
+      const id = res.id;
+      window.location.replace(`/${id}`)
+    })
     .catch(error => console.error("ERROR:", error))
   }
 
   return (
     <div className='container'>
       <form>
-        <input
+        <InputTitle
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          placeholder="Awesome Title"
           required
         />
         <EditorContent editor={editor} />
