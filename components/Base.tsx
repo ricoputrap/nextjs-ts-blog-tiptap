@@ -8,7 +8,9 @@ interface Props {
 }
 
 const Main = styled.main`
-  padding: 40px 240px;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
 `;
 
 const Base: React.FC<Props> = ({
