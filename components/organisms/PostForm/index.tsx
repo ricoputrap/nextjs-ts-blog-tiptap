@@ -49,7 +49,7 @@ const PostForm: React.FC<Props> = ({ id, title: oldTitle, body, cover }) => {
     .then(res => res.json())
     .then(res => {
       const id = res.id;
-      // window.location.replace(`/${id}`)
+      window.location.replace(`/${id}`)
     })
     .catch(error => console.error("ERROR:", error))
   }
