@@ -1,17 +1,29 @@
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../../atoms/Button';
 import EditorMenuBar from '../../molecules/EditorMenuBar';
 import { Actions, InputTitle } from './index.styles';
 
-const PostForm: React.FC = () => {
+interface Props {
+  id?: number;
+  title?: string;
+  body?: string;
+  cover?: string;
+}
+
+const PostForm: React.FC<Props> = ({ id, title: oldTitle, body, cover }) => {
   const [title, setTitle] = useState("");
+  useEffect(() => {
+    if (id && oldTitle) 
+      setTitle(oldTitle);
+  }, [oldTitle]);
+
   const editor = useEditor({
     extensions: [
       StarterKit
     ],
-    content: `<div>Let's tell the world your great stories!</div>`
+    content: (id && body) ? body : `<div>Let's tell the world your great stories!</div>`
   });
 
   const onSubmit = async (e: React.MouseEvent) => {
@@ -23,15 +35,21 @@ const PostForm: React.FC = () => {
 
     const data = { title, body }
 
-    const URL = "https://62598fb5cda73d132d173293.mockapi.io/api/v1/posts";
+    let URL = "https://62598fb5cda73d132d173293.mockapi.io/api/v1/posts/";
+    let method = "POST";
+    if (id) {
+      URL += id;
+      method = "PUT";
+    }
+      
     fetch(URL, {
-      method: "POST",
+      method,
       body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(res => {
       const id = res.id;
-      window.location.replace(`/${id}`)
+      // window.location.replace(`/${id}`)
     })
     .catch(error => console.error("ERROR:", error))
   }
@@ -51,7 +69,7 @@ const PostForm: React.FC = () => {
         <Actions>
           <Button
             label='Cancel'
-            onClick={() => console.log("CANCEL")}
+            onClick={() => window.location.replace("/")}
           />
           <Button
             label='Publish'

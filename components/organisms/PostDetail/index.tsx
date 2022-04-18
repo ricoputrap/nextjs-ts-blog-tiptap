@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useMemo } from 'react'
 import { MdDelete, MdEdit } from "react-icons/md";
 import getFormattedDate from '../../../helpers/getFormattedDate';
@@ -35,9 +36,11 @@ const PostDetail: React.FC<BlogPost> = ({ id, title, body, cover, createdAt }) =
         <div className='flex flex-between'>
           <p className='published-date'>{ publishedDate }</p>
           <Actions>
-            <Icon>
-              <MdEdit />
-            </Icon>
+            <Link href={`/write/${id}`} passHref>
+              <Icon>
+                <MdEdit />
+              </Icon>
+            </Link>
             <Icon onClick={confirmDetelePost}>
               <MdDelete />
             </Icon>
